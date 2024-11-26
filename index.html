@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Notes App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    <style>
+
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: aqua;
+            
+        }
+
+        button {
+            width: 110px;
+            height: 40px;
+            border-radius: 4px;
+            margin-left: 1050px;
+            margin-top: 50px;
+            transition: 0.7s;
+            font-size: 18px;
+        }
+
+        .container {
+            width: 350px;
+            height: 350px;
+            background-color: white;
+            border-radius: 8px;
+            margin-left: 50px;
+            margin-top: 20px;
+        }
+
+        .heading {
+            width: 350px;
+            height: 50px;
+            background-color: black;
+            display: flex;
+            justify-content: end;
+            align-items: center; 
+            gap: 20px;   
+        }
+
+        .heading i{
+            color: white;
+        }
+
+        button:hover{
+            background-color: tomato;
+            color: white;
+        }
+    
+    </style>
+</head>
+
+<body>
+
+    <button id="click">+ Add Note</button>
+
+    <!-- <div class="container">
+        <div class="heading">
+            <i class="fa-regular fa-floppy-disk"></i>
+            <i style="margin-right: 10px;" class="fa-solid fa-trash"></i>
+        </div>
+    </div> -->
+
+    <script>
+
+        var clicking = document.querySelector("#click");
+
+        clicking.addEventListener(
+            "click",
+            function(){
+                var container = document.createElement("div")
+                container.classList.add("container")
+                container.innerHTML = ` <div class="heading">
+            <i class="fa-regular fa-floppy-disk"></i>
+            <i style="margin-right: 10px;" class="fa-solid fa-trash"></i>
+           </div>`
+
+           document.body.appendChild(container);
+
+           var Delete = container.querySelector(".fa-trash")
+
+           Delete.addEventListener("click", function () {
+            container.remove();
+           });
+            }    
+ 
+        )
+
+        document.addEventListener(
+            "contextmenu",
+
+            function(disabled){
+                disabled.preventDefault()
+            }
+        )
+
+        document.addEventListener(
+            "keydown",
+
+            function(e){
+                if(e.ctrlKey == true && e.shiftKey == true && e.key == "I"){
+                    e.preventDefault()
+                }
+            }
+        )
+
+    </script>
+
+</body>
+
+</html>
